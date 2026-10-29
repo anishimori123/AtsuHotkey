@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 — 2026-10-28 (about 5 minutes)
+
+**What changed**
+- New hotkey **Alt+Z**: open, bring to front, or cycle windows of the Claude desktop app.
+- The app looks for Claude in its usual install places, so it can also wake Claude up from the tray.
+- Help page and README updated.
+
+**Why**
+- Atsushi uses the Claude app a lot and wanted the same quick switching as Notepad, Edge and Chrome.
+
 ## 1.1.0 — 2026-10-28 (about 10 minutes)
 
 **What changed**

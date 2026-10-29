@@ -1,10 +1,11 @@
 ; ==============================================================
-;  Hotkey Helper  -  version 1.1.0
+;  Hotkey Helper  -  version 1.2.0
 ;  Made with AutoHotkey v2 (free): https://www.autohotkey.com
 ;
 ;  Alt+N        Notepad  (open / bring to front / cycle windows)
 ;  Alt+E        Edge     (open / bring to front / cycle windows)
 ;  Alt+C        Chrome   (open / bring to front / cycle windows)
+;  Alt+Z        Claude desktop app (open / bring to front / cycle windows)
 ;  Alt+1/2/3    Paste the text saved in templates\1.txt, 2.txt, 3.txt
 ;  Alt+Shift+H  Show the help page
 ;
@@ -32,6 +33,7 @@ TrayTip("Running. Press Alt+Shift+H for help.", AppTitle)
 !n:: CycleApp("notepad.exe", "notepad.exe")
 !e:: CycleApp("msedge.exe",  "msedge.exe")
 !c:: CycleApp("chrome.exe",  "chrome.exe")
+!z:: CycleApp("claude.exe",  ClaudeLaunchCmd())
 
 !1:: PasteTemplate(1)
 !2:: PasteTemplate(2)
@@ -106,6 +108,24 @@ ActivateWindow(id) {
             WinRestore(id)
         WinActivate(id)
     }
+}
+
+; Find how to start the Claude desktop app on this PC.
+; (It also brings Claude back if it is hiding in the tray near the clock.)
+ClaudeLaunchCmd() {
+    paths := [
+        EnvGet("LOCALAPPDATA") "\AnthropicClaude\claude.exe",
+        EnvGet("LOCALAPPDATA") "\Programs\Claude\Claude.exe",
+        EnvGet("ProgramFiles") "\Claude\Claude.exe",
+        A_Programs "\Claude.lnk",
+        A_Programs "\Anthropic\Claude.lnk",
+        A_ProgramsCommon "\Claude.lnk"
+    ]
+    for path in paths {
+        if FileExist(path)
+            return path
+    }
+    return "claude.exe"     ; last try: let Windows look for it
 }
 
 SortNumbers(arr) {
@@ -224,6 +244,7 @@ SWITCH APPS
   Alt + N   Notepad
   Alt + E   Microsoft Edge
   Alt + C   Google Chrome
+  Alt + Z   Claude desktop app
 
   - Not open yet?  It opens.
   - Hidden behind other windows or minimized?  It comes to the front.

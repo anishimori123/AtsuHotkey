@@ -7,6 +7,7 @@ A small free app that runs quietly near the clock and gives you shortcuts:
 | Alt + N | Notepad: open it, bring it to the front, or press again to cycle windows |
 | Alt + E | Microsoft Edge: same idea |
 | Alt + C | Google Chrome: same idea |
+| Alt + Z | Claude desktop app: same idea |
 | Alt + 1 / 2 / 3 | Paste the text saved in `templates\1.txt`, `2.txt`, `3.txt` |
 | Alt + Shift + H | Show the help page |
 
@@ -63,6 +64,7 @@ To turn it back on, double-click **HotkeyHelper.ahk** again. It will start with 
 - **Cycling switches windows, not tabs.** Three Chrome windows means Alt+C rotates through all three. Tabs inside one window are not cycled.
 - **Alt shortcuts take over.** While this runs, Alt+N / E / C / 1 / 2 / 3 do *our* actions in every app. Click **Stop Hotkey Helper** to get the original shortcuts back.
 - **"Run as administrator" apps:** pasting and switching may not work in apps opened as administrator. This is a Windows safety rule.
+- **Claude app:** Alt+Z needs the Claude desktop app installed (free download at https://claude.ai/download). If Claude is hiding in the tray near the clock, Alt+Z brings it back.
 - **Moving the folder?** Stop Hotkey Helper first, move the folder, then double-click `HotkeyHelper.ahk` in its new place. That updates the startup link.
 - **Templates are plain text** saved as UTF-8, so Japanese text works.
 
